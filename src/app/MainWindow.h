@@ -33,6 +33,9 @@ private:
     void UpdateTitle();
     void SetCurrentPath(const QString &path);
 
+    bool ConfirmDiscard();
+    void closeEvent(QCloseEvent *event) override;
+
     CodeEditor editor;
     QString current_file;
 

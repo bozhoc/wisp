@@ -73,6 +73,35 @@ void MainWindow::SetCurrentPath(const QString &path)
     UpdateTitle();
 }
 
+bool MainWindow::ConfirmDiscard()
+{
+    if (!editor.document()->isModified())
+        return true;
+
+    QMessageBox::StandardButton answer =
+        QMessageBox::question(this, "Unsaved changes", "Save your changes?",
+                              QMessageBox::Save | QMessageBox::Discard | QMessageBox::Cancel);
+
+    switch (answer)
+    {
+    case QMessageBox::Save:
+        SaveFile();
+        return !editor.document()->isModified();
+    case QMessageBox::Discard:
+        return true;
+    default:
+        return false;
+    }
+}
+
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    if (ConfirmDiscard())
+        event->accept();
+    else
+        event->ignore();
+}
+
 void MainWindow::LoadFile(const QString &path)
 {
     QFile file(path);
@@ -100,6 +129,9 @@ void MainWindow::LoadFile(const QString &path)
 
 void MainWindow::OpenFromTree(const QModelIndex &index)
 {
+    if (!ConfirmDiscard())
+        return;
+
     if (filesys_model.isDir(index))
         return;
 
@@ -108,6 +140,9 @@ void MainWindow::OpenFromTree(const QModelIndex &index)
 
 void MainWindow::NewFile()
 {
+    if (!ConfirmDiscard())
+        return;
+
     editor.clear();
     editor.setReadOnly(false);
     SetCurrentPath("");
@@ -115,6 +150,9 @@ void MainWindow::NewFile()
 
 void MainWindow::OpenFile()
 {
+    if (!ConfirmDiscard())
+        return;
+
     QString path = QFileDialog::getOpenFileName(this, "Open File");
 
     if (path.isEmpty())
@@ -125,6 +163,9 @@ void MainWindow::OpenFile()
 
 void MainWindow::OpenFolder()
 {
+    if (!ConfirmDiscard())
+        return;
+
     QString folder_directory = QFileDialog::getExistingDirectory(this, "Open Folder");
 
     // didn't select a folder
