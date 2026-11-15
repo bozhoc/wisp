@@ -41,5 +41,5 @@ Run it with:
 | Windows  | Not yet tested |
 | macOS    | Not yet tested |
 
-##License
+## License
 See [LICENSE](LICENSE)
