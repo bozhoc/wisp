@@ -1,7 +1,9 @@
 #include "CodeEditor.h"
+#include "Highlighter.h"
 
 CodeEditor::CodeEditor()
 {
+    new Highlighter(document());
 }
 
 void CodeEditor::keyPressEvent(QKeyEvent *event)

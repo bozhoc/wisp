@@ -24,6 +24,9 @@ add_executable(Wisp
 
     src/editor/CodeEditor.h
     src/editor/CodeEditor.cpp
+
+    src/editor/Highlighter.h
+    src/editor/Highlighter.cpp
 )
 
 target_link_libraries(Wisp

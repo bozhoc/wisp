@@ -175,7 +175,7 @@ void MainWindow::OpenFolder()
     filesys_model.setRootPath(folder_directory);
     file_tree.setRootIndex(filesys_model.index(folder_directory));
 
-    folder_dock.setWindowTitle(QFileInfo(folder_directory).fileName());
+    folder_dock.setWindowTitle(">: " + QFileInfo(folder_directory).fileName());
     folder_dock.show();
 }
 

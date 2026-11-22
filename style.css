@@ -1,0 +1,2 @@
+QPlainTextEdit, QTreeView { background: #1E1E1E; color: #D4D4D4; border: none; }
+QTreeView::item:selected { background: #3A3F5C; color: #FFFFFF; }
