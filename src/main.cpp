@@ -7,7 +7,9 @@ int main(int argc, char *argv[])
 
     app.setStyle("Fusion");
 
-    QFile stylesheet(":style.css");
+    QFile stylesheet(":/style.css");
+    if (stylesheet.open(QFile::ReadOnly))
+        app.setStyleSheet(stylesheet.readAll());
 
     MainWindow window;
     window.show();
