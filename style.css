@@ -1,2 +1,115 @@
-QPlainTextEdit, QTreeView { background: #1E1E1E; color: #D4D4D4; border: none; }
-QTreeView::item:selected { background: #3A3F5C; color: #FFFFFF; }
+/* ==========================================================
+   WISP THEME (dark)
+   editor #16181D < sidebar #1C1F26 < window chrome #242832
+   Accent: #C4A1E8
+   ========================================================== */
+
+/* Fallback for any widget not styled below (dialogs, tooltips) */
+QWidget {
+    background: #242832;
+    color: #D8DAE0;
+}
+
+/* ---------- Top menu bar (File ...) ---------- */
+
+/* The bar itself */
+QMenuBar {
+    background: #242832;
+    color: #D8DAE0;
+}
+
+/* Menu title under the mouse or opened */
+QMenuBar::item:selected {
+    background: #343A4D;
+    color: #FFFFFF;
+}
+
+/* Dropdown list that opens from the menu bar */
+QMenu {
+    background: #2B303C;
+    color: #D8DAE0;
+    border: 1px solid #3F4659;
+}
+
+/* Hovered entry in the dropdown (accent color) */
+QMenu::item:selected {
+    background: #C4A1E8;
+    color: #16181D;
+}
+
+/* ---------- Sidebar (folder panel) ---------- */
+
+/* Sidebar title bar, shows the folder name */
+QDockWidget::title {
+    background: #2B303C;
+    color: #A9AEBB;
+    padding: 6px;
+}
+
+/* Draggable divider between sidebar and editor */
+QMainWindow::separator {
+    background: #343A4D;
+    width: 2px;
+    height: 2px;
+}
+
+/* File list: background and text */
+QTreeView {
+    background: #1C1F26;
+    color: #B8BDC9;
+    border: none;
+}
+
+/* Hovered file or folder */
+QTreeView::item:hover {
+    background: #262B36;
+}
+
+/* Selected file or folder */
+QTreeView::item:selected {
+    background: #C4A1E8;
+    color: #16181D;
+}
+
+/* ---------- Editor ---------- */
+
+/* Text area; darkest surface so code stands out.
+   selection-* is the highlight when you select text */
+QPlainTextEdit {
+    background: #16181D;
+    color: #D8DAE0;
+    border: none;
+    selection-background-color: #3F4A73;
+    selection-color: #FFFFFF;
+}
+
+/* ---------- Scrollbars ---------- */
+
+/* Scrollbar tracks (the groove) */
+QScrollBar:vertical {
+    background: #16181D;
+    width: 12px;
+}
+QScrollBar:horizontal {
+    background: #16181D;
+    height: 12px;
+}
+
+/* The draggable part of the scrollbar */
+QScrollBar::handle {
+    background: #3F4659;
+    border-radius: 4px;
+    min-height: 24px;
+    min-width: 24px;
+}
+
+/* Handle under the mouse (accent color) */
+QScrollBar::handle:hover {
+    background: #C4A1E8;
+}
+
+/* Hides the arrow buttons at the scrollbar ends */
+QScrollBar::add-line, QScrollBar::sub-line {
+    width: 0;
+    height: 0;
+}
